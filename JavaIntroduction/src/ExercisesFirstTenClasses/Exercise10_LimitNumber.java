@@ -11,15 +11,16 @@ import java.util.Scanner;
  *
  * @author Archer
  */
-public class Exercise5_OddEven {
+public class Exercise10_LimitNumber {
     public static void main(String[] args){
+        int suma = 0;
         Scanner leer = new Scanner(System.in);
-        System.out.println("Por favor ingrese un número");
-        int num = leer.nextInt();
-        if(num % 2 == 0){
-            System.out.println("El numero ingresado es par");
-        }else{
-            System.out.println("El numero ingresado es impar");
+        System.out.println("Por favor el número límite");
+        int limite = leer.nextInt();
+        while(suma < limite){
+            System.out.println("Por favor ingrese un numero");
+            suma += leer.nextInt();
         }
-    }   
+        System.out.println("La suma final fue: " + suma);
+    }     
 }

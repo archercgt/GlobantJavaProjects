@@ -11,15 +11,15 @@ import java.util.Scanner;
  *
  * @author Archer
  */
-public class Exercise7_StringLenght {
+public class Exercise9_FirstLetter {
     public static void main(String[] args){
         Scanner leer = new Scanner(System.in);
         System.out.println("Por favor ingrese una frase");
         String frase = leer.nextLine();
-        if(frase.length()==8){
+        if(frase.substring(0, 1).equals("A")){
             System.out.println("Correcto");
         }else{
             System.out.println("Incorrecto");
         } 
-    }    
+    }      
 }
