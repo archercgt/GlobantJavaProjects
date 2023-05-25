@@ -19,5 +19,6 @@ public class Exercise1_SumOfNumbers {
         System.out.println("Por favor ingrese el segundo número");
         int num2 = leer.nextInt();
         System.out.println("La suma de los numeros ingresados es: " + String.valueOf(num1+num2));
+        leer.close();
     }
 }
