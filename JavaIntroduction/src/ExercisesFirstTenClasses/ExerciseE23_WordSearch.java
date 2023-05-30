@@ -31,6 +31,7 @@ public class ExerciseE23_WordSearch {
         }
         llenarMatriz(sopa);
         imprimirSopa(sopa);
+        leer.close();
     }
     
     public static void llenarMatrizVacia(String[][]sopa){

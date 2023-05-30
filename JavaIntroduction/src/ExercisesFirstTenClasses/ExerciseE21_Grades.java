@@ -45,5 +45,6 @@ public class ExerciseE21_Grades {
         System.out.println("");
         System.out.println("La cantidad de aprobados es: " + aprobados);
         System.out.println("La cantidad de desaprobados es: " + desaprobados);
+        leer.close();
     }
 }
