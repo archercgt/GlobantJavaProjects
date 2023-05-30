@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Archer
  */
-public class ExerciseE1_Minutes {
+public class ExerciseE10_RandomMultiplication {
 
     /**
      * @param args the command line arguments
@@ -19,17 +19,14 @@ public class ExerciseE1_Minutes {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner leer = new Scanner(System.in);
-        System.out.println("Ingrese una cantidad de tiempo en minutos");
-        int minutos = leer.nextInt();
-        int horas = minutos/60;
-        int dias = 0;
-        while (dias *24 < horas){
-            dias++;
-        }
-        dias--;
-        horas = horas - (dias * 24);
-        System.out.println("Los minutos ingresados corresponden a " + dias + " días y " + horas + " horas.");
-        leer.close();
+        int num1 = (int) (Math.random() * 10);
+        int num2 = (int) (Math.random() * 10);
+        int producto = num1 * num2;
+        int adivinado;
+        System.out.println("producto " + producto);
+        do{
+            System.out.println("ingrese un numero producto de dos numeros aleatorios entre 0 y 10");
+            adivinado = leer.nextInt();
+        }while(producto != adivinado);
     }
-    
 }

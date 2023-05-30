@@ -18,5 +18,6 @@ public class Exercise4_ToFahrenheit {
         int temp = leer.nextInt();
         int tempF = 32 + (9 * temp / 5);
         System.out.println("La temperatura en Fahrenheit es : " + tempF);
+        leer.close();
     }    
 }

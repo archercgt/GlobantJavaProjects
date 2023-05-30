@@ -20,6 +20,7 @@ public class Exercise9_FirstLetter {
             System.out.println("Correcto");
         }else{
             System.out.println("Incorrecto");
-        } 
+        }
+        leer.close();
     }      
 }

@@ -47,5 +47,6 @@ public class Exercise12_RS232 {
                 System.out.println("Cadena incorrecta");
             }
         }
+        leer.close();
     }
 }

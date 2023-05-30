@@ -18,5 +18,6 @@ public class Exercise3_AskPhrase {
         String frase = leer.nextLine();
         System.out.println("La frase ingresada en mayusculas es: " + frase.toUpperCase());
         System.out.println("La frase ingresada en minusculas es: " + frase.toLowerCase()); 
+        leer.close();
     }
 }

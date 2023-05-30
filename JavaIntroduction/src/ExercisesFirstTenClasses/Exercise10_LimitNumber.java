@@ -22,5 +22,6 @@ public class Exercise10_LimitNumber {
             suma += leer.nextInt();
         }
         System.out.println("La suma final fue: " + suma);
+        leer.close();
     }     
 }

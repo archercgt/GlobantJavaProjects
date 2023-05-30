@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Archer
  */
-public class ExerciseE1_Minutes {
+public class ExerciseE13_Ladder {
 
     /**
      * @param args the command line arguments
@@ -19,17 +19,15 @@ public class ExerciseE1_Minutes {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner leer = new Scanner(System.in);
-        System.out.println("Ingrese una cantidad de tiempo en minutos");
-        int minutos = leer.nextInt();
-        int horas = minutos/60;
-        int dias = 0;
-        while (dias *24 < horas){
-            dias++;
+        System.out.println("Ingrese un nùmero entero que represente la altura de la escalera");
+        int altura = leer.nextInt();
+        System.out.println("");
+        for(int i = 1; i <= altura; i++){
+            for (int j = 1; j <= i; j++ ){
+                System.out.print(j);
+            }
+            System.out.println("");
         }
-        dias--;
-        horas = horas - (dias * 24);
-        System.out.println("Los minutos ingresados corresponden a " + dias + " días y " + horas + " horas.");
         leer.close();
     }
-    
 }

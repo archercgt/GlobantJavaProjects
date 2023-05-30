@@ -26,14 +26,12 @@ public class Exercise17_CountDigits {
         llenarVector(tamano, vector);
         contarDigitos(vector);
         imprimir(vector);
+        leer.close();
     }
 
     public static void llenarVector(int tamano, int [] vector){
-        double min = 1.0;
-        double max = 99999.0;  // Maximum value
-        for(int i = 0; i < tamano; i++){
-            
-            vector[i] = (int)ThreadLocalRandom.current().nextDouble(min, max);
+        for(int i = 0; i < tamano; i++){    
+            vector[i] = AzarPorCantDigitos(1, 5);
         }
     }
     
@@ -77,5 +75,50 @@ public class Exercise17_CountDigits {
             System.out.print(vector[i] + " ");
         }
         System.out.println("");
+    }
+    
+    // -----------------------------------------------------
+    // Devuelve un entero positivo al azar que sea de una cantidad
+    // de dígitos entre "digitosMin" y "digitosMax"
+    // con misma probabilidad para cualquier cantidad de dígitos
+    // dentro de ese rango.  
+    // Ej: AzarPorCantDigitos(1,2) debería devolver números entre 0 y 99.
+    //     AzarPorCantDigitos(3,5) debería devolver números entre 100 y 99999.
+    public static int AzarPorCantDigitos(int digitosMin, int digitosMax) {
+
+        int num, numDigitosAleatorio, maximo, minimo;
+
+        // Para generar un número aleatorio entre 0 y 99999...
+        // Si se usa directamente "(math.random() * 10.000)"
+        // la probabilidad de generar un número de "n" dígitos aumenta 
+        // cuanto mayor sea el valor de "n".
+        // Por lo que va a haber muchísimos números de 5 dígitos
+        // menos de 4, pocos de 3, casi ninguno de 2 y casi imposible de 1.        
+        // 
+        // Para igualar la probabilidad de recibír un número aleatorio de
+        // 1, 2, 3, 4 o 5 dígitos o los que sea, 
+        // primero se elije un número aleatorio
+        // entre 1 y 5 (o el rango que sea) y luego se genera un número aleatorio
+        // con <esa> cantidad de dígitos.     
+        // Elije un número al azar entre digitosMin y digitosMax.
+        numDigitosAleatorio = (int) ((Math.random() * digitosMax) + digitosMin);
+
+        // Genera un número aleatorio con esa cantidad de dígitos.
+        maximo = (int) Math.pow(10, numDigitosAleatorio);
+        minimo = (int) Math.pow(10, numDigitosAleatorio - 1);
+        num = (int) ((Math.random() * (maximo - minimo) + 1) + minimo);
+
+        // Notas:
+        // 0..9          <-- numDigitosAleatorio = 1
+        // 10..99        <-- numDigitosAleatorio = 2
+        // 100..999      <-- numDigitosAleatorio = 3
+        // 1000...9999   <-- numDigitosAleatorio = 4
+        // 10000..99999  <-- numDigitosAleatorio = 5
+        // Para generar un número aleatorio entre min y max...
+        // (Math.random() * (max - min) + 1) + min;
+        // https://stackoverflow.com/questions/7961788/math-random-explanation
+        // ------------------------------------------------------------------------
+        // ------------------------------------------------------------------------
+        return num;
     }
 }

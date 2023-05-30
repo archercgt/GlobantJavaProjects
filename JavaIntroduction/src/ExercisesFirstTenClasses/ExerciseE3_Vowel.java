@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Archer
  */
-public class ExerciseE1_Minutes {
+public class ExerciseE3_Vowel {
 
     /**
      * @param args the command line arguments
@@ -19,16 +19,15 @@ public class ExerciseE1_Minutes {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner leer = new Scanner(System.in);
-        System.out.println("Ingrese una cantidad de tiempo en minutos");
-        int minutos = leer.nextInt();
-        int horas = minutos/60;
-        int dias = 0;
-        while (dias *24 < horas){
-            dias++;
+        System.out.println("Ingrese una letra");
+        String letra = leer.nextLine();
+        letra = letra.toLowerCase();
+        if(letra.equals("a") || letra.equals("e") || letra.equals("i") || letra.equals("o") || letra.equals("u")){
+            System.out.println("El valor ingrasado es una vocal");
         }
-        dias--;
-        horas = horas - (dias * 24);
-        System.out.println("Los minutos ingresados corresponden a " + dias + " días y " + horas + " horas.");
+        else {
+            System.out.println("El valor ingresado no es una vocal");
+        }
         leer.close();
     }
     

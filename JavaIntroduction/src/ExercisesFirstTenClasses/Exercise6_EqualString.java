@@ -20,6 +20,7 @@ public class Exercise6_EqualString {
             System.out.println("Correcto");
         }else{
             System.out.println("Frase errónea");
-        } 
+        }
+        leer.close();
     }
 }

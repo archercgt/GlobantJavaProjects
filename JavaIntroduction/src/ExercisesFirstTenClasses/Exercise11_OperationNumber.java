@@ -72,5 +72,6 @@ public class Exercise11_OperationNumber {
                     break;  
             }
         }
+        leer.close();
     }    
 }

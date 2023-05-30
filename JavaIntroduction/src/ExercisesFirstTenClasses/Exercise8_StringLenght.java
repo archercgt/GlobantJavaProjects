@@ -20,6 +20,7 @@ public class Exercise8_StringLenght {
             System.out.println("Correcto");
         }else{
             System.out.println("Incorrecto");
-        } 
+        }
+        leer.close();
     }    
 }

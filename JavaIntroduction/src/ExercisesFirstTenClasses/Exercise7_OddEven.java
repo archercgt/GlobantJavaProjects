@@ -21,5 +21,6 @@ public class Exercise7_OddEven {
         }else{
             System.out.println("El numero ingresado es impar");
         }
+        leer.close();
     }   
 }

@@ -11,25 +11,25 @@ import java.util.Scanner;
  *
  * @author Archer
  */
-public class ExerciseE1_Minutes {
+public class ExerciseE9_DivisionSubstraction {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        int contador = 0;
         Scanner leer = new Scanner(System.in);
-        System.out.println("Ingrese una cantidad de tiempo en minutos");
-        int minutos = leer.nextInt();
-        int horas = minutos/60;
-        int dias = 0;
-        while (dias *24 < horas){
-            dias++;
-        }
-        dias--;
-        horas = horas - (dias * 24);
-        System.out.println("Los minutos ingresados corresponden a " + dias + " días y " + horas + " horas.");
+        System.out.println("Ingrese el divisor");
+        int divisor = leer.nextInt();
+        System.out.println("Ingrese el dividendo");
+        int dividendo = leer.nextInt();
+        do{
+            divisor = divisor - dividendo;
+            contador++;
+        }while(divisor > dividendo);
+        System.out.println("El residuo es: " + divisor);
+        System.out.println("El cociente es: " + contador);
         leer.close();
     }
-    
 }

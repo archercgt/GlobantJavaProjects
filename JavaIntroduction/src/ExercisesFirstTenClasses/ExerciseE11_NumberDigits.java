@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Archer
  */
-public class ExerciseE1_Minutes {
+public class ExerciseE11_NumberDigits {
 
     /**
      * @param args the command line arguments
@@ -19,17 +19,14 @@ public class ExerciseE1_Minutes {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner leer = new Scanner(System.in);
-        System.out.println("Ingrese una cantidad de tiempo en minutos");
-        int minutos = leer.nextInt();
-        int horas = minutos/60;
-        int dias = 0;
-        while (dias *24 < horas){
-            dias++;
-        }
-        dias--;
-        horas = horas - (dias * 24);
-        System.out.println("Los minutos ingresados corresponden a " + dias + " días y " + horas + " horas.");
+        int digitos = 0;
+        System.out.println("Ingrese un numero");
+        int num = leer.nextInt();
+        do{
+            num = num / 10;
+            digitos++;
+        }while(num > 0);
+        System.out.println("La cantidad de digitos del número es: " + digitos);
         leer.close();
     }
-    
 }

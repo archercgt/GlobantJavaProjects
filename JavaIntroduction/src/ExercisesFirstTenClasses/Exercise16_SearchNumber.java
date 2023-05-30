@@ -27,6 +27,7 @@ public class Exercise16_SearchNumber {
         int numero = leer.nextInt();
         buscarNumero(numero, vector);
         imprimir(tamano, vector);
+        leer.close();
     }
     
     public static void llenar(int tamano, int[] vector){

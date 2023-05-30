@@ -17,5 +17,6 @@ public class Exercise2_AskName {
         System.out.println("Por favor ingrese su nombre");
         String nombre = leer.nextLine();
         System.out.println("El nombre ingresado es: " + nombre);
+        leer.close();
     }
 }

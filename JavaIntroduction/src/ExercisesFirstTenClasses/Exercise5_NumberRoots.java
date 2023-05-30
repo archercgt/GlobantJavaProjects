@@ -19,5 +19,6 @@ public class Exercise5_NumberRoots {
         System.out.println("El doble del numero es: " + String.valueOf(num*2));
         System.out.println("El triple del numero es: " + String.valueOf(num*3));
         System.out.println("La raiz cuadrada del numero es : " + Math.sqrt(num));
+        leer.close();
     }    
 }
