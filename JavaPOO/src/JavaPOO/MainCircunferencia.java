@@ -5,6 +5,9 @@
  */
 package JavaPOO;
 
+import Entidad.Circunferencia;
+import Servicio.CircunferenciaService;
+
 /**
  *
  * @author Archer
@@ -16,6 +19,10 @@ public class MainCircunferencia {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        CircunferenciaService cir_servicio = new CircunferenciaService();
+        Circunferencia circ = cir_servicio.crearCircunferencia(3);
+        cir_servicio.area(circ);
+        cir_servicio.perimetro(circ);
     }
     
 }

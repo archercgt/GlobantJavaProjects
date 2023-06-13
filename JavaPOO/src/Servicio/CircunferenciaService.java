@@ -17,11 +17,11 @@ public class CircunferenciaService {
         return circ;
     }
     
-    public double area(Circunferencia circ){
-        return Math.pow(circ.getRadio(), 2) * Math.PI;
+    public void area(Circunferencia circ){
+        System.out.println("El área del círculo es: " + Math.pow(circ.getRadio(), 2) * Math.PI);
     }
     
-    public double perimetro(Circunferencia circ){
-        return 2 * Math.PI * circ.getRadio();
+    public void perimetro(Circunferencia circ){
+        System.out.println("El perimetro del círculo es: " + 2 * Math.PI * circ.getRadio());
     }
 }
