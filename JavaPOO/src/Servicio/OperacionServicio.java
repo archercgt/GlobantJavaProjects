@@ -20,6 +20,7 @@ public class OperacionServicio {
         opcn.setNumero1(leer.nextInt());
         System.out.println("Ingrese el numero 2");
         opcn.setNumero2(leer.nextInt());
+        leer.close();
         return opcn;
     }
     

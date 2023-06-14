@@ -20,6 +20,7 @@ public class RectanguloService {
         rect.setAltura(leer.nextInt());
         System.out.println("Ingrese la base del rectangulo");
         rect.setBase(leer.nextInt());
+        leer.close();
         return rect;
     }
     
