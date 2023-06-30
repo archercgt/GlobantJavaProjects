@@ -12,8 +12,8 @@ import java.util.Date;
  * @author Archer
  */
 public class Persona2 {
-    String nombre;
-    Date fecha_nacimiento;
+    private String nombre;
+    private Date fecha_nacimiento;
 
     public Persona2() {
     }

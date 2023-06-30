@@ -10,7 +10,7 @@ package Entidad;
  * @author Archer
  */
 public class Matematica {
-    double num1, num2;
+    private double num1, num2;
 
     public Matematica() {
     }

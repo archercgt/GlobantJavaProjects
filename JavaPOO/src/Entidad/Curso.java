@@ -12,10 +12,10 @@ import java.util.Scanner;
  * @author Archer
  */
 public class Curso {
-    String nombreCurso, turno;
-    int cantidadHorasPorDia, cantidadDiasPorSemana;
-    double precioPorHora;
-    String [] alumnos = new String[5];
+    private String nombreCurso, turno;
+    private int cantidadHorasPorDia, cantidadDiasPorSemana;
+    private double precioPorHora;
+    private String [] alumnos = new String[5];
 
     public Curso() {
     }

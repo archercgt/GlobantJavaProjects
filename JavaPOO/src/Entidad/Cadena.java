@@ -10,8 +10,8 @@ package Entidad;
  * @author Archer
  */
 public class Cadena {
-    String frase;
-    int longitud;
+    private String frase;
+    private int longitud;
 
     public Cadena() {
     }

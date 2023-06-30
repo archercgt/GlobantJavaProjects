@@ -12,10 +12,10 @@ import java.util.Scanner;
  * @author Archer
  */
 public class Movil {
-    String marca, modelo;
-    double precio;
-    int memoriaRam;
-    int [] codigo = new int[7];
+    private String marca, modelo;
+    private double precio;
+    private int memoriaRam;
+    private int [] codigo = new int[7];
 
     public Movil() {
     }
