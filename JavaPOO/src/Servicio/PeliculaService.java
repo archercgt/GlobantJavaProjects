@@ -20,8 +20,7 @@ public class PeliculaService {
     public void PeliculaService() {
     }
    
-    public void crearPelicula(){
-        Scanner leer = new Scanner(System.in);
+    public void crearPelicula(Scanner leer){
         Pelicula pelicula = new Pelicula();
         System.out.println("Ingrese el nombre de la película");
         pelicula.setTitulo(leer.nextLine());
@@ -36,8 +35,7 @@ public class PeliculaService {
         System.out.println("");
     }
     
-    public void buscarTitulo(){
-        Scanner leer = new Scanner(System.in);
+    public void buscarTitulo(Scanner leer){
         boolean existe = false;
         System.out.println("Ingrese el título de la película a buscar");
         String peliculaBuscar = leer.nextLine();
@@ -56,8 +54,7 @@ public class PeliculaService {
         }
     }
 
-    public void buscarGenero(){
-        Scanner leer = new Scanner(System.in);
+    public void buscarGenero(Scanner leer){
         boolean existen = false;
         System.out.println("Ingrese el genero a buscar");
         String generoBuscar = leer.nextLine();
@@ -87,4 +84,8 @@ public class PeliculaService {
             }
         }
     }
+
+    public List<Pelicula> getPeliculas() {
+        return peliculas;
+    }  
 }

@@ -5,6 +5,7 @@
  */
 package JavaPOO;
 
+import Servicio.AlquilerService;
 import Servicio.PeliculaService;
 import java.util.Scanner;
 
@@ -22,6 +23,7 @@ public class MainPeliculas {
         boolean cerrar = false;
         Scanner leer = new Scanner(System.in);
         PeliculaService ps = new PeliculaService();
+        AlquilerService as = new AlquilerService(ps);
         while(!cerrar){
             System.out.println("Bienvenido a Blockbuster");
             System.out.println("Por favor ingrese una de las siguientes opciones");
@@ -34,24 +36,28 @@ public class MainPeliculas {
             System.out.println("7. Buscar alquiler por fecha");
             System.out.println("8. Finalizar");
             int opcion = leer.nextInt();
+            leer.nextLine();
             switch(opcion){
                 case 1:
-                    ps.crearPelicula();
+                    ps.crearPelicula(leer);
                     break;
                 case 2:
                     ps.listarDisponibles();
                     break;
                 case 3:
+                    as.crearAlquiler(leer);
                     break;
                 case 4:
+                    as.listarAlquileres();
                     break;
                 case 5:
-                    ps.buscarTitulo();                 
+                    ps.buscarTitulo(leer);                 
                     break;
                 case 6:
-                    ps.buscarGenero();
+                    ps.buscarGenero(leer);
                     break;
                 case 7:
+                    as.alquilerFecha(leer);
                     break;
                 case 8:
                     System.out.println("Gracias, vuelva pronto");
@@ -64,5 +70,6 @@ public class MainPeliculas {
                     break;                                    
             }
         }
+        leer.close();
     }    
 }

@@ -5,7 +5,8 @@
  */
 package Entidad;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 /**
  *
@@ -13,13 +14,13 @@ import java.util.Date;
  */
 public class Alquiler {
     private Pelicula pelicula;
-    private Date fechaInicio, fechaFin;
+    private LocalDate fechaInicio, fechaFin;
     private double precio;
 
     public Alquiler() {
     }
 
-    public Alquiler(Pelicula pelicula, Date fechaInicio, Date fechaFin, double precio) {
+    public Alquiler(Pelicula pelicula, LocalDate fechaInicio, LocalDate fechaFin, double precio) {
         this.pelicula = pelicula;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -34,19 +35,19 @@ public class Alquiler {
         this.pelicula = pelicula;
     }
 
-    public Date getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaFin() {
+    public LocalDate getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(Date fechaFin) {
+    public void setFechaFin(LocalDate fechaFin) {
         this.fechaFin = fechaFin;
     }
 
@@ -57,4 +58,9 @@ public class Alquiler {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
+    @Override
+    public String toString() {
+        return "Alquiler{" + "pelicula=" + pelicula + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", precio=" + precio + '}';
+    } 
 }
