@@ -32,18 +32,28 @@ public class PeliculaService {
         System.out.println("Ingrese la duracion de la película");
         pelicula.setDuracion(leer.nextInt());
         peliculas.add(pelicula);
+        System.out.println("Pelicula ingresada correctamente!!!");
+        System.out.println("");
     }
     
-    public boolean buscarTitulo(){
+    public void buscarTitulo(){
         Scanner leer = new Scanner(System.in);
+        boolean existe = false;
         System.out.println("Ingrese el título de la película a buscar");
         String peliculaBuscar = leer.nextLine();
         for(Pelicula pelicula:peliculas){
             if(pelicula.getTitulo().equals(peliculaBuscar)){
-                return true;
+                existe = true;
             }
         }
-        return false;
+        if(existe){
+            System.out.println("La película existe");
+            System.out.println("");
+        }
+        else{
+            System.out.println("La película NO existe");
+            System.out.println("");
+        }
     }
 
     public void buscarGenero(){
@@ -61,5 +71,20 @@ public class PeliculaService {
         if(!existen)
             System.out.println("No se encontraron perlìculas del genero indicado");
         System.out.println("");
-    } 
+    }
+    
+    public void listarDisponibles(){
+        if(peliculas.isEmpty()){
+            System.out.println("No se han ingresado películas a la librería");
+            System.out.println("");
+        }
+            
+        else{
+            System.out.println("A continuación se listan las películas disponibles");
+            for(Pelicula pelicula:peliculas){
+                System.out.println(pelicula);
+                System.out.println("");
+            }
+        }
+    }
 }

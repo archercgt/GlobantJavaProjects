@@ -37,24 +37,16 @@ public class MainPeliculas {
             switch(opcion){
                 case 1:
                     ps.crearPelicula();
-                    System.out.println("Película ingresada correctamente");
-                    System.out.println("");
                     break;
                 case 2:
+                    ps.listarDisponibles();
                     break;
                 case 3:
                     break;
                 case 4:
                     break;
                 case 5:
-                    if(ps.buscarTitulo()){
-                        System.out.println("La película existe");
-                        System.out.println("");
-                    }
-                    else{
-                        System.out.println("La película NO existe");
-                        System.out.println("");
-                    }                        
+                    ps.buscarTitulo();                 
                     break;
                 case 6:
                     ps.buscarGenero();
@@ -62,6 +54,8 @@ public class MainPeliculas {
                 case 7:
                     break;
                 case 8:
+                    System.out.println("Gracias, vuelva pronto");
+                    System.out.println("");
                     cerrar = true;
                     break;
                 default:
