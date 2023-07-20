@@ -12,7 +12,7 @@ import java.util.Scanner;
  *
  * @author Archer
  */
-public class MainRazas {
+public class RazasMain {
 
     /**
      * @param args the command line arguments
