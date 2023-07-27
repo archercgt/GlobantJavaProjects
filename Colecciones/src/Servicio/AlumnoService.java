@@ -9,6 +9,7 @@ import Entidad.Alumno;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  *
@@ -49,24 +50,22 @@ public class AlumnoService {
     }
     
     public void notaFinal(){
-        boolean encontrado = false;
         System.out.println("Ingrese el nombre del alumno que desea buscar");
         String alumno_buscar = leer.next();
-        for(Alumno alumno: alumnos){
-            if(alumno.getNombre().equals(alumno_buscar)){
-                ArrayList<Double> notas = alumno.getNotas();
-                Double suma = 0.0;
-                for(Double nota: notas){
-                    suma += nota;
-                }
-                DecimalFormat formatoDecimal = new DecimalFormat("#.##");
-                String resultado = formatoDecimal.format(suma/notas.size());
-                System.out.println("El promedio de las notas es: " + resultado);
-                encontrado = true;
+        Optional<Alumno> optionalAlumno = alumnos.stream()
+                .filter(alumno -> alumno.getNombre().equals(alumno_buscar))
+                .findFirst();
+        if (optionalAlumno.isPresent()) {
+            ArrayList<Double> notas = optionalAlumno.get().getNotas();
+            Double suma = 0.0;
+            for(Double nota: notas){
+                suma += nota;
             }
-        }
-        if(!encontrado){
-            System.out.println("El alumno ingresado no se encontró");
+            DecimalFormat formatoDecimal = new DecimalFormat("#.##");
+            String resultado = formatoDecimal.format(suma/notas.size());
+            System.out.println("El promedio de las notas es: " + resultado);
+        } else {
+            System.out.println("El estudiante ingresado no se encontró");
         }
     }
 }

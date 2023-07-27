@@ -33,4 +33,11 @@ public class Alumno {
     public void setNotas(ArrayList<Double> notas) {
         this.notas = notas;
     }
+
+    @Override
+    public String toString() {
+        return "Alumno{" + "nombre=" + nombre + ", notas=" + notas + '}';
+    }
+    
+    
 }
