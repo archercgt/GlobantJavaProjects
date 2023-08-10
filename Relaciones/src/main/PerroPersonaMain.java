@@ -7,6 +7,7 @@ package main;
 
 import entidad.Perro;
 import entidad.Persona;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,8 +24,6 @@ public class PerroPersonaMain {
         Persona p2 = new Persona();
         Perro pe1 = new Perro();
         Perro pe2 = new Perro();
-        p1.setPerro(pe1);
-        p2.setPerro(pe2);
         pe1.setNombre("Firulais");
         pe1.setEdad(9);
         pe1.setRaza("Pincher");
@@ -41,9 +40,19 @@ public class PerroPersonaMain {
         p2.setApellido("Rivas");
         p2.setDocumento(666666666);
         p2.setEdad(30);
-        
-        System.out.println(p1);
-        System.out.println(p2);     
+        ArrayList<Perro> perros = new ArrayList();
+        ArrayList<Persona> personas = new ArrayList();
+        perros.add(pe1);
+        perros.add(pe2);
+        personas.add(p1);
+        personas.add(p2);
+        Persona.agregarPerros(perros);
+        p1.adoptarPerro();
+        p2.adoptarPerro();
+        System.out.println("Lista de personas");
+        for(Persona persona: personas){
+            System.out.println(persona);
+        }
     }
     
 }

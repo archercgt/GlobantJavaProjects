@@ -14,15 +14,17 @@ public class Perro {
     private String raza;
     private int edad;
     private String tamano;
+    private Persona dueno;
 
     public Perro() {
     }
 
-    public Perro(String nombre, String raza, int edad, String tamano) {
+    public Perro(String nombre, String raza, int edad, String tamano, Persona dueno) {
         this.nombre = nombre;
         this.raza = raza;
         this.edad = edad;
         this.tamano = tamano;
+        this.dueno = dueno;
     }
 
     public String getNombre() {
@@ -55,6 +57,14 @@ public class Perro {
 
     public void setTamano(String tamano) {
         this.tamano = tamano;
+    }
+
+    public Persona getDueno() {
+        return dueno;
+    }
+
+    public void setDueno(Persona dueno) {
+        this.dueno = dueno;
     }
 
     @Override
