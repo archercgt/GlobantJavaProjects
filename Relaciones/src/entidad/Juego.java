@@ -44,15 +44,16 @@ public class Juego {
         this.r = r;
     }
     
-    public void ronda(){
+    public boolean ronda(){
         for(Jugador jugador: jugadores){
             if (jugador.disparo(r)){
                 System.out.println("El jugador que se mojó es: " + jugador.getNombre());
-                break;
+                return true;
             }
             else{
                 System.out.println("El jugador " + jugador.getNombre() + " se salvó");
             }
         }
+        return false;
     }
 }

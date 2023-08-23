@@ -55,5 +55,12 @@ public class Jugador {
     public void setMojado(boolean mojado) {
         this.mojado = mojado;
     }
+
+    @Override
+    public String toString() {
+        return "Jugador{" + "id=" + id + ", nombre=" + nombre + ", mojado=" + mojado + '}';
+    }
+    
+    
     
 }

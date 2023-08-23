@@ -26,7 +26,9 @@ public class Revolver {
     public void llenarRevolver(){
         Random random = new Random();
         posicion_actual = random.nextInt(6) + 1;
+        System.out.println("Posición inicial: " + posicion_actual);
         posicion_agua = random.nextInt(6) + 1;
+        System.out.println("Posición agua: " + posicion_agua);
     }
     
     public boolean mojar(){
