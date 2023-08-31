@@ -5,9 +5,10 @@
  */
 package main;
 
-
+import entidad.Electrodomestico;
 import entidad.Lavadora;
 import entidad.Televisor;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,16 +20,27 @@ public class ElectrodomesticoMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-//        Lavadora lavadora = new Lavadora();
-//        lavadora.crearLavadora();
-//        lavadora.precioFinal();
-//        System.out.println(lavadora);
-        Televisor televisor = new Televisor();
-        televisor.crearTelevisor();
-        System.out.println(televisor);
-        televisor.precioFinal();
-        System.out.println(televisor);
+        ArrayList<Electrodomestico> electrodomesticos = new ArrayList();
+        int precio_lavadoras = 0, precio_televisores = 0;
+        electrodomesticos.add(new Lavadora());
+        electrodomesticos.add(new Lavadora());
+        electrodomesticos.add(new Televisor());
+        electrodomesticos.add(new Televisor());
+        
+        for(Electrodomestico aux: electrodomesticos){
+            if (aux instanceof Lavadora) {
+                ((Lavadora) aux).crearLavadora();
+                aux.precioFinal();
+                precio_lavadoras += aux.getPrecio();
+            }
+            if (aux instanceof Televisor) {
+                ((Televisor) aux).crearTelevisor();
+                aux.precioFinal();
+                precio_televisores += aux.getPrecio();
+            }
+        }
+        System.out.println("El precio total de las lavadoras es: $" + precio_lavadoras);
+        System.out.println("El precio total de los televisores es: $" + precio_televisores);
+        System.out.println("El precio total de los electrodomésticos es: $" + (precio_lavadoras + precio_televisores));
     }
-    
 }
