@@ -2,7 +2,7 @@
 
 <ClassDiagram name="Multi-file class diagram">
   <ClassDiagramComponents>
-    <Class name="Animal" package="entidad" visibility="public" isAbstract="true" xPosition="20.0" yPosition="20.0">
+    <Class name="Animal" package="entidad" visibility="public" isAbstract="true" xPosition="479.0" yPosition="5.0">
       <Fields>
         <Field name="nombre" type="String" visibility="protected"/>
         <Field name="edad" type="int" visibility="protected"/>
@@ -36,7 +36,7 @@
         <Method name="alimentarse" returnType="void" visibility="public" isAbstract="true"/>
       </Methods>
     </Class>
-    <Class name="Caballo" package="entidad" visibility="public" xPosition="320.0" yPosition="20.0">
+    <Class name="Caballo" package="entidad" visibility="public" xPosition="82.0" yPosition="490.0">
       <Fields/>
       <Constructors>
         <Constructor visibility="public">
@@ -50,7 +50,7 @@
         <Method name="alimentarse" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Gato" package="entidad" visibility="public" xPosition="620.0" yPosition="20.0">
+    <Class name="Gato" package="entidad" visibility="public" xPosition="505.0" yPosition="490.0">
       <Fields/>
       <Constructors>
         <Constructor visibility="public">
@@ -64,7 +64,7 @@
         <Method name="alimentarse" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Perro" package="entidad" visibility="public" xPosition="920.0" yPosition="20.0">
+    <Class name="Perro" package="entidad" visibility="public" xPosition="886.0" yPosition="490.0">
       <Fields/>
       <Constructors>
         <Constructor visibility="public">
@@ -81,7 +81,7 @@
   </ClassDiagramComponents>
   <ClassDiagramRelations>
     <IsRelation name="is" source="entidad.Gato" target="entidad.Animal"/>
-    <IsRelation name="is" source="entidad.Perro" target="entidad.Animal"/>
     <IsRelation name="is" source="entidad.Caballo" target="entidad.Animal"/>
+    <IsRelation name="is" source="entidad.Perro" target="entidad.Animal"/>
   </ClassDiagramRelations>
 </ClassDiagram>
