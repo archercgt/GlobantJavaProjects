@@ -3,24 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaPOO;
+package main;
 
-import Entidad.Movil;
+import Entidad.Raices;
+import Servicio.RaicesService;
 
 /**
  *
  * @author Archer
  */
-public class MainMovil {
+public class MainRaices {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Movil movil_prueba = new Movil();
-        movil_prueba.cargarCelular();
-        System.out.println(movil_prueba.toString());
+        RaicesService raices_servicio = new RaicesService();
+        Raices mis_raices = raices_servicio.crearRaices();
+        double discriminante = raices_servicio.getDiscriminante(mis_raices);
+        raices_servicio.calcular(discriminante, mis_raices);
     }
-    
 }

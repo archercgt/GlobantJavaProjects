@@ -3,24 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaPOO;
+package main;
 
-import Entidad.Libro;
-import Servicio.LibroService;
+import Entidad.Movil;
 
 /**
  *
  * @author Archer
  */
-public class MainLibro {
+public class MainMovil {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        LibroService lib_servicio = new LibroService();
-        Libro mi_libro = lib_servicio.cargarLibro();
-        lib_servicio.mostrarLibro(mi_libro);
+        Movil movil_prueba = new Movil();
+        movil_prueba.cargarCelular();
+        System.out.println(movil_prueba.toString());
     }
+    
 }

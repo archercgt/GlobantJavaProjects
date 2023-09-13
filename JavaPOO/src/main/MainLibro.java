@@ -3,26 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaPOO;
+package main;
 
-import Entidad.Circunferencia;
-import Servicio.CircunferenciaService;
+import Entidad.Libro;
+import Servicio.LibroService;
 
 /**
  *
  * @author Archer
  */
-public class MainCircunferencia {
+public class MainLibro {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        CircunferenciaService cir_servicio = new CircunferenciaService();
-        Circunferencia circ = cir_servicio.crearCircunferencia(3);
-        cir_servicio.area(circ);
-        cir_servicio.perimetro(circ);
+        LibroService lib_servicio = new LibroService();
+        Libro mi_libro = lib_servicio.cargarLibro();
+        lib_servicio.mostrarLibro(mi_libro);
     }
-    
 }

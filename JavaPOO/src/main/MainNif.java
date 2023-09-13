@@ -3,25 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaPOO;
+package main;
 
-import Entidad.Puntos;
-import Servicio.PuntosService;
+import Entidad.NIF;
+import Servicio.NIFService;
 
 /**
  *
  * @author Archer
  */
-public class MainPuntos {
+public class MainNif {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        PuntosService puntos_servicio = new PuntosService();
-        Puntos mis_puntos = puntos_servicio.crearPuntos();
-        System.out.println("La distancia entre los puntos ingresados es: " 
-                + puntos_servicio.calcularDistancia(mis_puntos));
+        NIFService nif_servicio = new NIFService();
+        NIF mi_nif = nif_servicio.crearNif();
+        nif_servicio.mostrar(mi_nif);
     }
+    
 }

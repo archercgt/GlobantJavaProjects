@@ -3,25 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaPOO;
+package main;
 
-import Entidad.NIF;
-import Servicio.NIFService;
+import entidad.Persona;
 
 /**
  *
  * @author Archer
  */
-public class MainNif {
+public class PersonaMain {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        NIFService nif_servicio = new NIFService();
-        NIF mi_nif = nif_servicio.crearNif();
-        nif_servicio.mostrar(mi_nif);
+        Persona persona = null;
+        try{
+            persona.esMayorDeEdad();
+        }catch(Exception e){
+            System.out.println("El mensaje capturado por la excepción corresponde a: " + e.getMessage());
+        }
     }
-    
 }
