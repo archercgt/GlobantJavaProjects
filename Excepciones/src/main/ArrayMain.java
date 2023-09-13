@@ -5,24 +5,23 @@
  */
 package main;
 
-import entidad.Persona;
-
 /**
  *
  * @author Archer
  */
-public class PersonaMain {
+public class ArrayMain {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Persona persona = null;
+        int[] numbers = {0, 1, 2, 3, 4};
         try{
-            persona.esMayorDeEdad();
-        }catch(NullPointerException e){
-            System.out.println("Se detectó una excepción de tipo 'NullPointer'");
+            System.out.println(numbers[5]);
+        }catch(ArrayIndexOutOfBoundsException e){
+            System.out.println("Se generó una excepción. Se trató de acceder a un elemento por fuero de los límites de Array.");
         }
     }
+    
 }
