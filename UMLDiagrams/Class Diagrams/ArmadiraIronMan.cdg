@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ArmadiraIronMan">
+  <ClassDiagramComponents>
+    <Class name="Armadura" package="" visibility="public" xPosition="745.0" yPosition="371.0">
+      <Fields>
+        <Field name="color_primario" type="String" visibility="private"/>
+        <Field name="color_secundario" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="caminar" returnType="void" visibility="public"/>
+        <Method name="correr" returnType="void" visibility="public"/>
+        <Method name="propulsar" returnType="void" visibility="public"/>
+        <Method name="volar" returnType="void" visibility="public"/>
+        <Method name="escribir" returnType="void" visibility="public"/>
+        <Method name="leer" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Bota" package="" visibility="public" xPosition="468.0" yPosition="207.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Guante" package="" visibility="public" xPosition="674.0" yPosition="207.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Consola" package="" visibility="public" xPosition="878.0" yPosition="207.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Sintetizador" package="" visibility="public" xPosition="1111.0" yPosition="207.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Interface name="Dispositivos" package="" visibility="public" xPosition="730.0" yPosition="24.0">
+      <Methods>
+        <Method name="usar" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Guante" target="Dispositivos"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Bota" target="Dispositivos"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Consola" target="Dispositivos"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Sintetizador" target="Dispositivos"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

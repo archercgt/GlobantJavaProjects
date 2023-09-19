@@ -23,7 +23,8 @@ public class MetodoA {
         System.out.println("sentencia_a1");
         System.out.println("sentencia_a2");
         try {
-            System.out.println(Integer.parseInt("sentencia_a3"));
+            System.out.println("sentencia_a3");
+            //System.out.println(Integer.parseInt("sentencia_a3"));
             System.out.println(Integer.parseInt("sentencia_a4"));
         } catch (Exception e) {
             System.out.println("sentencia_a6");

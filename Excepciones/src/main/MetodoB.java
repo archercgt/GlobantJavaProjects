@@ -22,7 +22,8 @@ public class MetodoB {
     public static void metodoB() {
         System.out.println("sentencia_b1");
         try {
-            System.out.println(Integer.parseInt("sentencia_b2"));
+            System.out.println("sentencia_b2");
+            //System.out.println(Integer.parseInt("sentencia_b2"));
         } catch (Exception e) {
             System.out.println("sentencia_b3");
         } finally {
