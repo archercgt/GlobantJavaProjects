@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jpa;
+package main;
 
 /**
  *
  * @author Archer
  */
-public class JPA {
+public class LibreriaMain {
 
     /**
      * @param args the command line arguments
