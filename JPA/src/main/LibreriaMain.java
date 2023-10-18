@@ -5,6 +5,10 @@
  */
 package main;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 /**
  *
  * @author Archer
@@ -16,6 +20,11 @@ public class LibreriaMain {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPAPU");
+        EntityManager em = emf.createEntityManager();
+        
+        
     }
     
 }
