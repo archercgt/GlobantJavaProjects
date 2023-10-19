@@ -5,9 +5,12 @@
  */
 package main;
 
+import java.util.Scanner;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import servicios.AutorServicio;
+import servicios.EditorialServicio;
 
 /**
  *
@@ -20,11 +23,18 @@ public class LibreriaMain {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Scanner scanner = new Scanner(System.in).useDelimiter("\n");
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPAPU");
         EntityManager em = emf.createEntityManager();
         
+        AutorServicio as = new AutorServicio();
+        EditorialServicio es = new EditorialServicio();
         
+        //as.crear(scanner, em);
+        es.crear(scanner, em);
+        
+        scanner.close();
     }
     
 }

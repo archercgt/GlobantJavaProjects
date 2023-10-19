@@ -5,32 +5,36 @@
  */
 package servicios;
 
+import java.util.Scanner;
+import javax.persistence.EntityManager;
+
 /**
  *
  * @author Archer
  */
-public class LibroServicio implements Funcionalidades{
+public class LibroServicio extends Servicio{
 
     public LibroServicio() {
     }
 
     @Override
-    public void consultar() {
+    public void consultar(Scanner scanner) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void crear() {
+    public void crear(Scanner scanner, EntityManager em) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void modificar() {
+    public void modificar(Scanner scanner) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void eliminar() {
+    public void eliminar(Scanner scanner) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
