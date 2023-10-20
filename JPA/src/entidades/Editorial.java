@@ -71,7 +71,6 @@ public class Editorial implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Editorial[ id=" + id + " ]";
+        return "entidades.Editorial[ id=" + id + ", nombre=" + nombre + " ]";
     }
-
 }

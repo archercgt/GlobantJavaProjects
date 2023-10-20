@@ -21,7 +21,7 @@ public class LibreriaMain {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         // TODO code application logic here
         Scanner scanner = new Scanner(System.in).useDelimiter("\n");
         
@@ -32,7 +32,10 @@ public class LibreriaMain {
         EditorialServicio es = new EditorialServicio();
         
         //as.crear(scanner, em);
-        es.crear(scanner, em);
+        //es.crear(scanner, em);
+        //as.consultar(scanner, em);
+        es.consultar(scanner, em);
+        
         
         scanner.close();
     }

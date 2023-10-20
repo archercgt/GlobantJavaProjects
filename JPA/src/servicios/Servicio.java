@@ -25,19 +25,25 @@ public class Servicio {
         return input;
     }
 
-    public void consultar(Scanner scanner){
-        
-    };
+    public void consultar(Scanner scanner, EntityManager em) throws Exception{
+    }
 
-    public void crear(Scanner scanner, EntityManager em){
-        
-    };
+    ;
 
-    public void modificar(Scanner scanner){
-        
-    };
+    public void crear(Scanner scanner, EntityManager em) throws Exception{
 
-    public void eliminar(Scanner scanner){
-        
-    };
+    }
+
+    ;
+
+    public void modificar(Scanner scanner) {
+
+    }
+
+    ;
+
+    public void eliminar(Scanner scanner) {
+
+    }
+;
 }

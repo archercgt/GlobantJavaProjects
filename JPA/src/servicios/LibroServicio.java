@@ -18,7 +18,7 @@ public class LibroServicio extends Servicio{
     }
 
     @Override
-    public void consultar(Scanner scanner) {
+    public void consultar(Scanner scanner, EntityManager em) throws Exception{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
