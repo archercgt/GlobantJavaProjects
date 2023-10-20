@@ -21,7 +21,6 @@ public class Libro implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long isbn;
     private String titulo;
     private int anio, ejemplares, ejemplaresPrestados, ejemplaresRestantes;

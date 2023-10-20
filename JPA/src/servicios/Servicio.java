@@ -6,7 +6,6 @@
 package servicios;
 
 import java.util.Scanner;
-import javax.persistence.EntityManager;
 
 /**
  *
@@ -24,26 +23,4 @@ public class Servicio {
         }
         return input;
     }
-
-    public void consultar(Scanner scanner, EntityManager em) throws Exception{
-    }
-
-    ;
-
-    public void crear(Scanner scanner, EntityManager em) throws Exception{
-
-    }
-
-    ;
-
-    public void modificar(Scanner scanner) {
-
-    }
-
-    ;
-
-    public void eliminar(Scanner scanner) {
-
-    }
-;
 }

@@ -19,8 +19,7 @@ public class AutorServicio extends Servicio {
     public AutorServicio() {
     }
 
-    @Override
-    public void consultar(Scanner scanner, EntityManager em) throws Exception {
+    public Autor consultar(Scanner scanner, EntityManager em) throws Exception {
         final String[] mensaje = {
             "Indique la opción según el parametro que desea utilizar para la búsqueda del autor;",
             "1. Buscar autor por ID",
@@ -54,7 +53,7 @@ public class AutorServicio extends Servicio {
                 default:
                     System.out.println("La opción ingresada no es valida.");
             }
-            System.out.println(autor);
+            return autor;
         } catch (NumberFormatException e) {
             throw new Exception("Error: El valor ingresado debe ser un número!!!");
         } catch (NoResultException e) {
@@ -64,7 +63,6 @@ public class AutorServicio extends Servicio {
         }
     }
 
-    @Override
     public void crear(Scanner scanner, EntityManager em) throws Exception {
         Autor autor = new Autor();
         try {
@@ -82,12 +80,9 @@ public class AutorServicio extends Servicio {
         }
     }
 
-    @Override
     public void modificar(Scanner scanner) {
     }
 
-    @Override
     public void eliminar(Scanner scanner) {
     }
-
 }

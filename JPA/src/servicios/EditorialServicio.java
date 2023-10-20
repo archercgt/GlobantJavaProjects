@@ -19,8 +19,7 @@ public class EditorialServicio extends Servicio{
     public EditorialServicio() {
     }
 
-    @Override
-    public void consultar(Scanner scanner, EntityManager em) throws Exception{
+    public Editorial consultar(Scanner scanner, EntityManager em) throws Exception{
         final String[] mensaje = {
             "Indique la opción según el parametro que desea utilizar para la búsqueda de la editorial;",
             "1. Buscar editorial por ID",
@@ -54,7 +53,7 @@ public class EditorialServicio extends Servicio{
                 default:
                     System.out.println("La opción ingresada no es valida.");
             }
-            System.out.println(editorial);
+            return editorial;
         } catch (NumberFormatException e) {
             throw new Exception("Error: El valor ingresado debe ser un número!!!");
         } catch (NoResultException e) {
@@ -64,7 +63,6 @@ public class EditorialServicio extends Servicio{
         }
     }
 
-    @Override
     public void crear(Scanner scanner, EntityManager em) {
         Editorial editorial = new Editorial();
         try {
@@ -82,14 +80,11 @@ public class EditorialServicio extends Servicio{
         }
     }
 
-    @Override
     public void modificar(Scanner scanner) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public void eliminar(Scanner scanner) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 }

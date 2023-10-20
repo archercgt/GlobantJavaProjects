@@ -5,6 +5,9 @@
  */
 package servicios;
 
+import entidades.Autor;
+import entidades.Editorial;
+import entidades.Libro;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
 
@@ -17,24 +20,55 @@ public class LibroServicio extends Servicio{
     public LibroServicio() {
     }
 
-    @Override
     public void consultar(Scanner scanner, EntityManager em) throws Exception{
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
-    @Override
-    public void crear(Scanner scanner, EntityManager em) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void crear(Scanner scanner, EntityManager em) throws Exception{
+        Libro libro = new Libro();
+        AutorServicio as = new AutorServicio();
+        EditorialServicio es = new EditorialServicio();
+        Autor autor = null;
+        Editorial editorial = null;
+        try {
+            System.out.println("Ingrese el ISBN del libro a almacenar");
+            Long isbn = Long.parseLong(validarInput(scanner));
+            libro.setIsbn(isbn);
+            System.out.println("Ingrese el título del libro a almacenar");
+            String titulo = validarInput(scanner);
+            libro.setTitulo(titulo);
+            System.out.println("Ingrese el año de publicación del libro a almacenar");
+            int anio = Integer.parseInt(validarInput(scanner));
+            libro.setAnio(anio);
+            System.out.println("Ingrese la cantidad de ejemplares del libro a almacenar");
+            int ejemplares = Integer.parseInt(validarInput(scanner));
+            libro.setEjemplares(ejemplares);
+            libro.setEjemplaresPrestados(0);
+            libro.setEjemplaresRestantes(ejemplares);
+            libro.setAlta(true);
+            System.out.println("A continuación se solicitará la información del autor para asignar al libro");
+            autor = as.consultar(scanner, em);
+            editorial = es.consultar(scanner, em);
+            libro.setAutor(autor);
+            libro.setEditorial(editorial);
+            em.getTransaction().begin();
+            em.persist(libro);
+            em.getTransaction().commit();
+            System.out.println("Libro almacenado exitosamente");
+            System.out.println("");
+        } catch (NumberFormatException e) {
+            throw new Exception("Error: El valor ingresado debe ser un número!!!");
+        } catch (Exception e){
+            throw e;
+        }
+        
     }
 
-    @Override
     public void modificar(Scanner scanner) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
 
-    @Override
     public void eliminar(Scanner scanner) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
-
 }

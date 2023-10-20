@@ -11,6 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import servicios.AutorServicio;
 import servicios.EditorialServicio;
+import servicios.LibroServicio;
 
 /**
  *
@@ -30,11 +31,13 @@ public class LibreriaMain {
         
         AutorServicio as = new AutorServicio();
         EditorialServicio es = new EditorialServicio();
+        LibroServicio ls = new LibroServicio();
         
         //as.crear(scanner, em);
         //es.crear(scanner, em);
-        //as.consultar(scanner, em);
-        es.consultar(scanner, em);
+        //System.out.println(as.consultar(scanner, em));
+        //System.out.println(es.consultar(scanner, em));
+        ls.crear(scanner, em);
         
         
         scanner.close();
