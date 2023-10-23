@@ -80,7 +80,45 @@ public class AutorServicio extends Servicio {
         }
     }
 
-    public void modificar(Scanner scanner) {
+    public void modificar(Scanner scanner,  EntityManager em) throws Exception{
+        Autor autor = consultar(scanner, em);
+        final String[] mensaje = {
+            "Indique la opción según la modificación que desee hace sobre el autor;",
+            "1. Dar de alta/baja",
+            "2. Modificar el nombre"
+        };
+        for (String line : mensaje) {
+            System.out.println(line);
+        }
+        String opcion = validarInput(scanner);
+        switch(opcion){
+            case "1":
+                System.out.println("Seleccione según desee dar de alta o de baja el autor");
+                System.out.println("1. Alta");
+                System.out.println("2. Baja");
+                String opcion2 = validarInput(scanner);
+                switch(opcion2){
+                    case "1":
+                        autor.setAlta(true);
+                        break;
+                    case "2":
+                        autor.setAlta(false);
+                        break;
+                }
+                break;
+            case "2":
+                System.out.println("Ingrese el nuevo nombre que tendrá el autor");
+                String nombre = validarInput(scanner);
+                autor.setNombre(nombre);
+                break;
+            default:
+                System.out.println("La opción ingresada es invalida");
+        }
+        em.getTransaction().begin();
+        em.merge(autor);
+        em.getTransaction().commit();
+        System.out.println("Autor modificado con éxito");
+        System.out.println("");
     }
 
     public void eliminar(Scanner scanner) {

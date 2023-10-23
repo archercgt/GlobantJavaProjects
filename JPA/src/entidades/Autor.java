@@ -71,7 +71,7 @@ public class Autor implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Autor[ id=" + id + ", nombre=" + nombre + " ]";
+        return "entidades.Autor[ id=" + id + ", nombre=" + nombre + ", alta/baja=" + alta + " ]";
     }
     
 }

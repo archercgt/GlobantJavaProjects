@@ -61,7 +61,6 @@ public class LibroServicio extends Servicio{
         } catch (Exception e){
             throw e;
         }
-        
     }
 
     public void modificar(Scanner scanner) {
