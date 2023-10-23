@@ -10,6 +10,7 @@ import entidades.Editorial;
 import entidades.Libro;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 /**
  *
@@ -20,8 +21,48 @@ public class LibroServicio extends Servicio{
     public LibroServicio() {
     }
 
-    public void consultar(Scanner scanner, EntityManager em) throws Exception{
-        
+    public Libro consultar(Scanner scanner, EntityManager em) throws Exception{
+        final String[] mensaje = {
+            "Indique la opción según el parametro que desea utilizar para la búsqueda del libro;",
+            "1. Buscar libro por ISBN",
+            "2. Buscar libro por título"
+        };
+        for (String line : mensaje) {
+            System.out.println(line);
+        }
+        try {
+            String opcion = validarInput(scanner);
+            Libro libro= null;
+            switch (opcion) {
+                case "1":
+                    System.out.println("Ingrese el ISBN del libro");
+                    Long isbn = Long.parseLong(validarInput(scanner));
+                    libro = (Libro) em.createQuery("SELECT l"
+                            + " FROM Libro l"
+                            + " WHERE l.isbn = :id").
+                            setParameter("id", isbn).
+                            getSingleResult();
+                    break;
+                case "2":
+                    System.out.println("Ingrese el nombre del libro");
+                    String titulo = validarInput(scanner);
+                    libro = (Libro) em.createQuery("SELECT l"
+                            + " FROM Libro l"
+                            + " WHERE l.titulo = :titulo").
+                            setParameter("titulo", titulo).
+                            getSingleResult();
+                    break;
+                default:
+                    System.out.println("La opción ingresada no es valida.");
+            }
+            return libro;
+        } catch (NumberFormatException e) {
+            throw new Exception("Error: El valor ingresado debe ser un número!!!");
+        } catch (NoResultException e) {
+            throw new Exception("Error: Libro no encontrado!!!");
+        } catch (Exception e) {
+            throw new Exception("Error durante la consulta");
+        }       
     }
 
     public void crear(Scanner scanner, EntityManager em) throws Exception{
@@ -63,8 +104,8 @@ public class LibroServicio extends Servicio{
         }
     }
 
-    public void modificar(Scanner scanner) {
-       
+    public void modificar(Scanner scanner, EntityManager em) throws Exception{
+   
     }
 
     public void eliminar(Scanner scanner) {

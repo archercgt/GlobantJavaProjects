@@ -38,8 +38,9 @@ public class LibreriaMain {
         //System.out.println(as.consultar(scanner, em));
         //System.out.println(es.consultar(scanner, em));
         //ls.crear(scanner, em);
-        es.modificar(scanner, em);
-        System.out.println(es.consultar(scanner, em));
+        //es.modificar(scanner, em);
+        //System.out.println(es.consultar(scanner, em));
+        System.out.println(ls.consultar(scanner, em));
         
         
         scanner.close();
