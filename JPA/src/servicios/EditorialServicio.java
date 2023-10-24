@@ -14,12 +14,12 @@ import javax.persistence.NoResultException;
  *
  * @author Archer
  */
-public class EditorialServicio extends Servicio{
+public class EditorialServicio extends Servicio {
 
     public EditorialServicio() {
     }
 
-    public Editorial consultar(Scanner scanner, EntityManager em) throws Exception{
+    public Editorial consultar(Scanner scanner, EntityManager em) throws Exception {
         final String[] mensaje = {
             "Indique la opción según el parametro que desea utilizar para la búsqueda de la editorial;",
             "1. Buscar editorial por ID",
@@ -63,11 +63,14 @@ public class EditorialServicio extends Servicio{
         }
     }
 
-    public void crear(Scanner scanner, EntityManager em) {
+    public void crear(Scanner scanner, EntityManager em) throws Exception{
         Editorial editorial = new Editorial();
         try {
             System.out.println("Ingrese el nombre de la editorial a almacenar");
             String nombre = validarInput(scanner);
+            if (validarEditorial(nombre, em) != null) {
+                throw new Exception("Error: La editorial ya existe");
+            }
             editorial.setNombre(nombre);
             editorial.setAlta(true);
             em.getTransaction().begin();
@@ -76,11 +79,11 @@ public class EditorialServicio extends Servicio{
             System.out.println("Editorial almacenada exitosamente");
             System.out.println("");
         } catch (Exception e) {
-            System.out.println("Error del sistema durante el almacenamiento de la editorial");
+            throw e;
         }
     }
 
-    public void modificar(Scanner scanner, EntityManager em) throws Exception{
+    public void modificar(Scanner scanner, EntityManager em) throws Exception {
         Editorial editorial = consultar(scanner, em);
         final String[] mensaje = {
             "Indique la opción según la modificación que desee hace sobre la editorial;",
@@ -91,13 +94,13 @@ public class EditorialServicio extends Servicio{
             System.out.println(line);
         }
         String opcion = validarInput(scanner);
-        switch(opcion){
+        switch (opcion) {
             case "1":
                 System.out.println("Seleccione según desee dar de alta o de baja la editorial");
                 System.out.println("1. Alta");
                 System.out.println("2. Baja");
                 String opcion2 = validarInput(scanner);
-                switch(opcion2){
+                switch (opcion2) {
                     case "1":
                         editorial.setAlta(true);
                         break;
@@ -123,5 +126,14 @@ public class EditorialServicio extends Servicio{
 
     public void eliminar(Scanner scanner) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Editorial validarEditorial(String nombre, EntityManager em) {
+        Editorial editorial = (Editorial) em.createQuery("SELECT e"
+                + " FROM Editorial e"
+                + " WHERE e.nombre = :nombre").
+                setParameter("nombre", nombre).
+                getSingleResult();
+        return editorial;
     }
 }

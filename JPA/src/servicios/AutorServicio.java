@@ -68,6 +68,9 @@ public class AutorServicio extends Servicio {
         try {
             System.out.println("Ingrese el nombre del autor a almacenar");
             String nombre = validarInput(scanner);
+            if(validarAutor(nombre, em) != null){
+                throw new Exception("Error: El autor ya existe");
+            }
             autor.setNombre(nombre);
             autor.setAlta(true);
             em.getTransaction().begin();
@@ -80,7 +83,7 @@ public class AutorServicio extends Servicio {
         }
     }
 
-    public void modificar(Scanner scanner,  EntityManager em) throws Exception{
+    public void modificar(Scanner scanner, EntityManager em) throws Exception {
         Autor autor = consultar(scanner, em);
         final String[] mensaje = {
             "Indique la opción según la modificación que desee hace sobre el autor;",
@@ -91,13 +94,13 @@ public class AutorServicio extends Servicio {
             System.out.println(line);
         }
         String opcion = validarInput(scanner);
-        switch(opcion){
+        switch (opcion) {
             case "1":
                 System.out.println("Seleccione según desee dar de alta o de baja el autor");
                 System.out.println("1. Alta");
                 System.out.println("2. Baja");
                 String opcion2 = validarInput(scanner);
-                switch(opcion2){
+                switch (opcion2) {
                     case "1":
                         autor.setAlta(true);
                         break;
@@ -122,5 +125,14 @@ public class AutorServicio extends Servicio {
     }
 
     public void eliminar(Scanner scanner) {
+    }
+
+    public Autor validarAutor(String nombre, EntityManager em) {
+        Autor autor = (Autor) em.createQuery("SELECT a"
+                + " FROM Autor a"
+                + " WHERE a.nombre = :nombre").
+                setParameter("nombre", nombre).
+                getSingleResult();
+        return autor;
     }
 }
