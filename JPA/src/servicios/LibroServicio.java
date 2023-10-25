@@ -125,9 +125,9 @@ public class LibroServicio extends Servicio {
             libro.setIsbn(isbn);
             System.out.println("Ingrese el título del libro a almacenar");
             String titulo = validarInput(scanner);
-            if(validarLibro(titulo, em) != null){
+            if (validarLibro(titulo, em) != null) {
                 throw new Exception("Error: El libro ya existe");
-            }            
+            }
             libro.setTitulo(titulo);
             System.out.println("Ingrese el año de publicación del libro a almacenar");
             int anio = Integer.parseInt(validarInput(scanner));
@@ -225,12 +225,15 @@ public class LibroServicio extends Servicio {
     }
 
     public Libro validarLibro(String titulo, EntityManager em) {
-        Libro libro = (Libro) em.createQuery("SELECT l"
-                + " FROM Libro l"
-                + " WHERE l.titulo = :titulo").
-                setParameter("titulo", titulo).
-                getSingleResult();
-        return libro;
+        try {
+            Libro libro = (Libro) em.createQuery("SELECT l"
+                    + " FROM Libro l"
+                    + " WHERE l.titulo = :titulo").
+                    setParameter("titulo", titulo).
+                    getSingleResult();
+            return libro;
+        } catch (Exception e) {
+            return null;
+        }
     }
-    
 }

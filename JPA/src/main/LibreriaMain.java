@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import servicios.AutorServicio;
+import servicios.ClienteServicio;
 import servicios.EditorialServicio;
 import servicios.LibroServicio;
 
@@ -32,20 +33,27 @@ public class LibreriaMain {
         AutorServicio as = new AutorServicio();
         EditorialServicio es = new EditorialServicio();
         LibroServicio ls = new LibroServicio();
+        ClienteServicio cs = new ClienteServicio();
 
         final String[] mensaje = {
             "Bienvenido!!! Ingrese la opción que desea ejecutar:",
             "1. Crear un autor",
             "2. Crear una editorial",
             "3. Crear un libro",
-            "4. Modificar un autor",
-            "5. Modificar una editorial",
-            "6. Modificar un libro",
-            "7. Consultar un autor",
-            "8. Consultar una editorial",
-            "9. Consultar un libro",
-            "10. Consultar libros",
-            "11. Salir"
+            "4. Crear un cliente",
+            "5. Crear un permiso",
+            "6. Modificar un autor",
+            "7. Modificar una editorial",
+            "8. Modificar un libro",
+            "9. Modificar un cliente",
+            "10. Modificar un permiso",
+            "11. Consultar un autor",
+            "12. Consultar una editorial",
+            "13. Consultar un libro",
+            "14. Consultar libros",
+            "15. Consultar un cliente",
+            "16. Consultar un permiso",
+            "17. Salir"
         };
         while (continuar) {
             for (String line : mensaje) {
@@ -64,34 +72,53 @@ public class LibreriaMain {
                     ls.crear(scanner, em);
                     break;
                 case "4":
-                    as.modificar(scanner, em);
+                    cs.crear(scanner, em);
                     break;
                 case "5":
-                    es.modificar(scanner, em);
+
                     break;
                 case "6":
-                    ls.modificar(scanner, em);
+                    as.modificar(scanner, em);
                     break;
                 case "7":
+                    es.modificar(scanner, em);
+                    break;
+                case "8":
+                    ls.modificar(scanner, em);
+                    break;
+                case "9":
+                    cs.modificar(scanner, em);
+                    break;
+                case "10":
+
+                    break; 
+                case "11":
                     System.out.println(as.consultar(scanner, em));
                     System.out.println("");
                     break;
-                case "8":
+                case "12":
                     System.out.println(es.consultar(scanner, em));
                     System.out.println("");
                     break;
-                case "9":
+                case "13":
                     System.out.println(ls.consultar(scanner, em));
                     System.out.println("");
                     break;
-                case "10":
+                case "14":
                     System.out.println(ls.consultarLibros(scanner, em));
                     System.out.println("");
-                    break; 
-                case "11":
+                    break;
+                case "15":
+                    System.out.println(cs.consultar(scanner, em));
+                    System.out.println("");
+                    break;
+                case "16":
+
+                    break;
+                case "17":
                     System.out.println("Hasta luego, Vuelva pronto!!!");
                     continuar = false;
-                    break;
+                    break;                    
                 default:
                     System.out.println("La opción ingresada es incorrecta");
             }

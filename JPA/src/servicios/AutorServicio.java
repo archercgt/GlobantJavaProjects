@@ -68,7 +68,7 @@ public class AutorServicio extends Servicio {
         try {
             System.out.println("Ingrese el nombre del autor a almacenar");
             String nombre = validarInput(scanner);
-            if(validarAutor(nombre, em) != null){
+            if (validarAutor(nombre, em) != null) {
                 throw new Exception("Error: El autor ya existe");
             }
             autor.setNombre(nombre);
@@ -124,15 +124,25 @@ public class AutorServicio extends Servicio {
         System.out.println("");
     }
 
-    public void eliminar(Scanner scanner) {
+    public void eliminar(Scanner scanner, EntityManager em) throws Exception{
+        Autor autor = consultar(scanner, em);
+        em.getTransaction().begin();
+        em.remove(autor);
+        em.getTransaction().commit();
+        System.out.println("Autor eliminado con éxito");
+        System.out.println("");        
     }
 
     public Autor validarAutor(String nombre, EntityManager em) {
-        Autor autor = (Autor) em.createQuery("SELECT a"
-                + " FROM Autor a"
-                + " WHERE a.nombre = :nombre").
-                setParameter("nombre", nombre).
-                getSingleResult();
-        return autor;
+        try {
+            Autor autor = (Autor) em.createQuery("SELECT a"
+                    + " FROM Autor a"
+                    + " WHERE a.nombre = :nombre").
+                    setParameter("nombre", nombre).
+                    getSingleResult();
+            return autor;
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 }

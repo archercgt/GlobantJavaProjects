@@ -63,7 +63,7 @@ public class EditorialServicio extends Servicio {
         }
     }
 
-    public void crear(Scanner scanner, EntityManager em) throws Exception{
+    public void crear(Scanner scanner, EntityManager em) throws Exception {
         Editorial editorial = new Editorial();
         try {
             System.out.println("Ingrese el nombre de la editorial a almacenar");
@@ -129,11 +129,15 @@ public class EditorialServicio extends Servicio {
     }
 
     public Editorial validarEditorial(String nombre, EntityManager em) {
-        Editorial editorial = (Editorial) em.createQuery("SELECT e"
-                + " FROM Editorial e"
-                + " WHERE e.nombre = :nombre").
-                setParameter("nombre", nombre).
-                getSingleResult();
-        return editorial;
+        try {
+            Editorial editorial = (Editorial) em.createQuery("SELECT e"
+                    + " FROM Editorial e"
+                    + " WHERE e.nombre = :nombre").
+                    setParameter("nombre", nombre).
+                    getSingleResult();
+            return editorial;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
