@@ -9,8 +9,10 @@ import entidades.Cliente;
 import entidades.Libro;
 import entidades.Prestamo;
 import java.sql.Date;
+import java.util.List;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -47,6 +49,9 @@ public class PrestamoServicio extends Servicio {
             Libro libro = ls.consultar(scanner, em);
             if (libro.getEjemplaresRestantes() > 0) {
                 prestamo.setLibro(libro);
+                if(validacionPrestamo(prestamo, em)){
+                    throw new Exception("Error: el préstamo ya existe");
+                }
                 libro.setEjemplaresPrestados(libro.getEjemplaresPrestados() + 1);
                 libro.setEjemplaresRestantes(libro.getEjemplaresRestantes() - 1);
                 em.getTransaction().begin();
@@ -69,4 +74,26 @@ public class PrestamoServicio extends Servicio {
         Prestamo prestamo = new Prestamo();
     }
 
+    public boolean validacionPrestamo(Prestamo prestamo, EntityManager em) {
+        // Define a JPQL query to check for the existence of a Prestamo with the same attributes
+        String jpql = "SELECT p FROM Prestamo p WHERE p.fechaPrestamo = :fechaPrestamo " +
+                "AND p.fechaDevolucion = :fechaDevolucion " +
+                "AND p.libro = :libro " +
+                "AND p.cliente = :cliente";
+
+        // Create a TypedQuery from the JPQL query
+        TypedQuery<Prestamo> query = em.createQuery(jpql, Prestamo.class);
+
+        // Set parameters for the query
+        query.setParameter("fechaPrestamo", prestamo.getFechaPrestamo());
+        query.setParameter("fechaDevolucion", prestamo.getFechaDevolucion());
+        query.setParameter("libro", prestamo.getLibro());
+        query.setParameter("cliente", prestamo.getCliente());
+
+        // Execute the query and retrieve the results
+        List<Prestamo> resultList = query.getResultList();
+
+        // Check if any matching Prestamo objects exist
+        return !resultList.isEmpty();
+    }
 }
