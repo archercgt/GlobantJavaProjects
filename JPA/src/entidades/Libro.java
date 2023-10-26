@@ -124,7 +124,9 @@ public class Libro implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Libro[ isbn=" + isbn + ", título=" + titulo + " ]";
+        return "entidades.Libro[ isbn=" + isbn + ", título=" + titulo +  ", ejemplares=" + ejemplares 
+                +  ", ejemplaresDisponibles=" + ejemplaresRestantes + ", ejemplaresPrestados=" 
+                + ejemplaresPrestados + " ]";
     }
     
 }

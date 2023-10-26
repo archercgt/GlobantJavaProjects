@@ -22,8 +22,8 @@ public class ClienteServicio extends Servicio {
     public Cliente consultar(Scanner scanner, EntityManager em) throws Exception {
         final String[] mensaje = {
             "Indique la opción según el parametro que desea utilizar para la búsqueda del cliente;",
-            "1. Buscar autor por ID",
-            "2. Buscar autor por documento"
+            "1. Buscar cliente por ID",
+            "2. Buscar cliente por documento"
         };
         for (String line : mensaje) {
             System.out.println(line);

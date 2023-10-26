@@ -13,6 +13,7 @@ import servicios.AutorServicio;
 import servicios.ClienteServicio;
 import servicios.EditorialServicio;
 import servicios.LibroServicio;
+import servicios.PrestamoServicio;
 
 /**
  *
@@ -34,6 +35,7 @@ public class LibreriaMain {
         EditorialServicio es = new EditorialServicio();
         LibroServicio ls = new LibroServicio();
         ClienteServicio cs = new ClienteServicio();
+        PrestamoServicio ps = new PrestamoServicio();
 
         final String[] mensaje = {
             "Bienvenido!!! Ingrese la opción que desea ejecutar:",
@@ -41,7 +43,7 @@ public class LibreriaMain {
             "2. Crear una editorial",
             "3. Crear un libro",
             "4. Crear un cliente",
-            "5. Crear un permiso",
+            "5. Crear un préstamo",
             "6. Modificar un autor",
             "7. Modificar una editorial",
             "8. Modificar un libro",
@@ -75,7 +77,7 @@ public class LibreriaMain {
                     cs.crear(scanner, em);
                     break;
                 case "5":
-
+                    ps.crear(scanner, em);
                     break;
                 case "6":
                     as.modificar(scanner, em);
