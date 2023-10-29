@@ -6,9 +6,6 @@
 package main;
 
 import java.util.Scanner;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import servicios.AutorServicio;
 import servicios.ClienteServicio;
 import servicios.EditorialServicio;
@@ -28,101 +25,50 @@ public class LibreriaMain {
         // TODO code application logic here
         Scanner scanner = new Scanner(System.in).useDelimiter("\n");
         boolean continuar = true;
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPAPU");
-        EntityManager em = emf.createEntityManager();
 
-        AutorServicio as = new AutorServicio();
-        EditorialServicio es = new EditorialServicio();
-        LibroServicio ls = new LibroServicio();
-        ClienteServicio cs = new ClienteServicio();
-        PrestamoServicio ps = new PrestamoServicio();
+        final AutorServicio as = new AutorServicio();
+        final EditorialServicio es = new EditorialServicio();
+        final LibroServicio ls = new LibroServicio();
+        final ClienteServicio cs = new ClienteServicio();
+        final PrestamoServicio ps = new PrestamoServicio();
 
         final String[] mensaje = {
-            "Bienvenido!!! Ingrese la opción que desea ejecutar:",
-            "1. Crear un autor",
-            "2. Crear una editorial",
-            "3. Crear un libro",
-            "4. Crear un cliente",
-            "5. Crear un préstamo",
-            "6. Modificar un autor",
-            "7. Modificar una editorial",
-            "8. Modificar un libro",
-            "9. Modificar un cliente",
-            "10. Modificar un permiso",
-            "11. Consultar un autor",
-            "12. Consultar una editorial",
-            "13. Consultar un libro",
-            "14. Consultar libros",
-            "15. Consultar un cliente",
-            "16. Consultar un permiso",
-            "17. Salir"
+            "Bienvenido!!! Ingrese la opción según el elemento con el que desee interactuar:",
+            "1. Autor",
+            "2. Editorial",
+            "3. Libro",
+            "4. Cliente",
+            "5. Préstamos",
+            "6. Salir de la aplicación",
+            ""
         };
         while (continuar) {
             for (String line : mensaje) {
                 System.out.println(line);
             }
             String opcion = validarInput(scanner);
-
-            switch (opcion) {
+            switch(opcion){
                 case "1":
-                    as.crear(scanner, em);
+                    as.menu(scanner, "autor");
                     break;
                 case "2":
-                    es.crear(scanner, em);
+                    es.menu(scanner, "editorial");
                     break;
                 case "3":
-                    ls.crear(scanner, em);
+                    ls.menu(scanner, "libro");
                     break;
                 case "4":
-                    cs.crear(scanner, em);
-                    break;
-                case "5":
-                    ps.crear(scanner, em);
-                    break;
-                case "6":
-                    as.modificar(scanner, em);
-                    break;
-                case "7":
-                    es.modificar(scanner, em);
-                    break;
-                case "8":
-                    ls.modificar(scanner, em);
-                    break;
-                case "9":
-                    cs.modificar(scanner, em);
-                    break;
-                case "10":
-
-                    break; 
-                case "11":
-                    System.out.println(as.consultar(scanner, em));
-                    System.out.println("");
-                    break;
-                case "12":
-                    System.out.println(es.consultar(scanner, em));
-                    System.out.println("");
-                    break;
-                case "13":
-                    System.out.println(ls.consultar(scanner, em));
-                    System.out.println("");
-                    break;
-                case "14":
-                    System.out.println(ls.consultarLibros(scanner, em));
-                    System.out.println("");
-                    break;
-                case "15":
-                    System.out.println(cs.consultar(scanner, em));
-                    System.out.println("");
-                    break;
-                case "16":
-
-                    break;
-                case "17":
-                    System.out.println("Hasta luego, Vuelva pronto!!!");
-                    continuar = false;
+                    cs.menu(scanner, "cliente");
                     break;                    
+                case "5":
+                    ps.menu(scanner, "préstamo");
+                    break;                    
+                case "6":
+                    continuar = false;
+                    System.out.println("Hasta luego, Vuelva pronto!!!");
+                    break;
                 default:
-                    System.out.println("La opción ingresada es incorrecta");
+                    System.out.println("La opción ingresada no es correcta");
             }
         }
         scanner.close();
