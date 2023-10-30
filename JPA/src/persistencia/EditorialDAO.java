@@ -69,5 +69,10 @@ public class EditorialDAO extends DAO<Editorial> {
         } catch (Exception e) {
             throw new Exception("Error durante la consulta");
         }
-    }    
+    }
+    
+    @Override
+    public void editar(Editorial editorial) {
+        super.editar(editorial);
+    }
 }

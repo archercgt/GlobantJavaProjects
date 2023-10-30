@@ -72,7 +72,6 @@ public class AutorDAO extends DAO<Autor> {
 
     @Override
     public void editar(Autor autor) {
-        super.guardar(autor);
+        super.editar(autor);
     }
-   
 }

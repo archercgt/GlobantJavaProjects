@@ -6,7 +6,6 @@
 package servicios;
 
 import java.util.Scanner;
-import persistencia.DAO;
 
 /**
  *
@@ -28,7 +27,7 @@ public class Servicio<T>{
     public void crear(Scanner scanner) throws Exception{
     }
 
-    public void modificar() {
+    public void modificar(Scanner scanner) throws Exception{
     }
 
     public void eliminar() {
@@ -60,7 +59,7 @@ public class Servicio<T>{
                         consultar(scanner);
                         break;
                     case "3":
-                        modificar();
+                        modificar(scanner);
                         break;
                     case "4":
                         eliminar();
