@@ -47,7 +47,6 @@ public class LibroDAO extends DAO<Libro> {
         } catch (Exception e) {
             throw e;
         }
-
     }
 
     public Libro buscarPorTitulo(String titulo) throws Exception {
