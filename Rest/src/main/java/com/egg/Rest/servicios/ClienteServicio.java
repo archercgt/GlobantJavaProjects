@@ -8,6 +8,7 @@ package com.egg.Rest.servicios;
 import com.egg.Rest.entidades.Cliente;
 import com.egg.Rest.excepciones.MiExcepcion;
 import com.egg.Rest.repositorios.ClienteRepositorio;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,8 +24,22 @@ public class ClienteServicio {
     private ClienteRepositorio clienteRepositorio;
 
     @Transactional
-    public void crearCliente(Cliente cliente) throws MiExcepcion{
+    public void crearCliente(Cliente cliente) throws MiExcepcion {
         clienteRepositorio.save(cliente);
+    }
+
+    @Transactional
+    public Cliente actualizarCliente(String id, Cliente cliente){
+        Optional<Cliente> respuesta = clienteRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            Cliente nuevo_cliente = clienteRepositorio.findById(id).get();
+            nuevo_cliente.setNombre(cliente.getNombre());
+            nuevo_cliente.setEmail(cliente.getEmail());
+            nuevo_cliente.setTelefono(cliente.getTelefono());
+            clienteRepositorio.save(cliente);
+            return nuevo_cliente;
+        }
+        return null;
     }
 
     private void validar(String nombre, String email, String telefono) throws MiExcepcion {
