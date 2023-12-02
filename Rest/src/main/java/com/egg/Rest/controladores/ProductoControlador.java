@@ -5,8 +5,8 @@
  */
 package com.egg.Rest.controladores;
 
-import com.egg.Rest.entidades.Cliente;
-import com.egg.Rest.servicios.ClienteServicio;
+import com.egg.Rest.entidades.Producto;
+import com.egg.Rest.servicios.ProductoServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,39 +26,39 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api")
-public class ClienteControlador {
-    
+public class ProductoControlador {
+
     @Autowired
-    private ClienteServicio clienteServicio;
-    
-    @GetMapping("/clientes")
+    private ProductoServicio productoServicio;
+
+    @GetMapping("/productos")
     @ResponseStatus(HttpStatus.OK)
-    public List<Cliente> getClient() {
-        return clienteServicio.leerClientes();
+    public List<Producto> getProduct() {
+        return productoServicio.leerProductos();
     }
 
-    @GetMapping("/cliente/{id}")
+    @GetMapping("/producto/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Cliente getClient(@PathVariable String id) {
-        return clienteServicio.leerCliente(id);
+    public Producto getProduct(@PathVariable String id) {
+        return productoServicio.leerProducto(id);
     }
 
-    @PostMapping("/cliente")
+    @PostMapping("/producto")
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente postClient(@RequestBody Cliente cliente) {
-        return clienteServicio.crearCliente(cliente);
+    public Producto postProduct(@RequestBody Producto producto) {
+        return productoServicio.crerProducto(producto);
     }
 
-    @PutMapping("/cliente/{id}")
+    @PutMapping("/producto/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Cliente updateClient(@PathVariable("id") String id,
-            @RequestBody Cliente cliente) {
-            return clienteServicio.actualizarCliente(id, cliente);
+    public Producto updateProduct(@PathVariable("id") String id,
+            @RequestBody Producto producto) {
+            return productoServicio.actualizarProducto(id, producto);
     }
 
-    @DeleteMapping("cliente/{id}")
+    @DeleteMapping("producto/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteClient(@PathVariable("id") String id) {
-        clienteServicio.eliminarCliente(id);
-    }
+    public void deleteProduct(@PathVariable("id") String id) {
+        productoServicio.eliminarProducto(id);
+    }    
 }

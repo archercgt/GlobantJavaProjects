@@ -6,8 +6,8 @@
 package com.egg.Rest.servicios;
 
 import com.egg.Rest.entidades.Cliente;
-import com.egg.Rest.excepciones.MiExcepcion;
 import com.egg.Rest.repositorios.ClienteRepositorio;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,35 +24,34 @@ public class ClienteServicio {
     private ClienteRepositorio clienteRepositorio;
 
     @Transactional
-    public void crearCliente(Cliente cliente) throws MiExcepcion {
-        clienteRepositorio.save(cliente);
+    public Cliente crearCliente(Cliente cliente) {
+        return clienteRepositorio.save(cliente);
+    }
+
+    public List<Cliente> leerClientes() {
+        return clienteRepositorio.findAll();
+    }
+
+    public Cliente leerCliente(String id) {
+        return clienteRepositorio.findById(id).get();
     }
 
     @Transactional
-    public Cliente actualizarCliente(String id, Cliente cliente){
+    public Cliente actualizarCliente(String id, Cliente cliente) {
         Optional<Cliente> respuesta = clienteRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Cliente nuevo_cliente = clienteRepositorio.findById(id).get();
             nuevo_cliente.setNombre(cliente.getNombre());
             nuevo_cliente.setEmail(cliente.getEmail());
             nuevo_cliente.setTelefono(cliente.getTelefono());
-            clienteRepositorio.save(cliente);
+            clienteRepositorio.save(nuevo_cliente);
             return nuevo_cliente;
         }
         return null;
     }
 
-    private void validar(String nombre, String email, String telefono) throws MiExcepcion {
-        if (nombre == null || nombre.isEmpty()) {
-            throw new MiExcepcion("El nombre no puede ser nulo");
-        }
-
-        if (email == null || email.isEmpty()) {
-            throw new MiExcepcion("El email no puede ser nulo");
-        }
-
-        if (telefono == null || telefono.isEmpty()) {
-            throw new MiExcepcion("El telefono no puede ser nulo");
-        }
+    @Transactional
+    public void eliminarCliente(String id) {
+        clienteRepositorio.deleteById(id);
     }
 }

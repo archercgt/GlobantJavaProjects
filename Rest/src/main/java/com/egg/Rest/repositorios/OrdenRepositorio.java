@@ -5,7 +5,7 @@
  */
 package com.egg.Rest.repositorios;
 
-import com.egg.Rest.entidades.Cliente;
+import com.egg.Rest.entidades.Orden;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author Archer
  */
 @Repository
-public interface ClienteRepositorio extends JpaRepository<Cliente, String>{
-   
+public interface OrdenRepositorio extends JpaRepository<Orden, String> {
+    
 }
