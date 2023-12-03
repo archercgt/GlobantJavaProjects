@@ -54,12 +54,14 @@ public class OrdenControlador {
         return ordenServicio.crearOrden(id, fecha);
     }
 
-//    @PutMapping("/orden/{id}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public Orden updateOrder(@PathVariable("id") String id,
-//            @RequestBody OrdenRequest ordenRequest) {
-//        return ordenServicio.actualizarOrden(id, cliente);
-//    }
+    @PutMapping("/orden/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Orden updateOrder(@PathVariable("id") String id,
+            @RequestBody OrdenRequest ordenRequest) {
+        String id_request = ordenRequest.getId();
+        Date fecha = ordenRequest.getFecha();
+        return ordenServicio.actualizarOrden(id, id_request, fecha);
+    }
 
     @DeleteMapping("orden/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

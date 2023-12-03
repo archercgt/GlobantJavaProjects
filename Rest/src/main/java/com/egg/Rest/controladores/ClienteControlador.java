@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 /**
  *
@@ -27,10 +28,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class ClienteControlador {
-    
+
     @Autowired
     private ClienteServicio clienteServicio;
-    
+
     @GetMapping("/clientes")
     @ResponseStatus(HttpStatus.OK)
     public List<Cliente> getClient() {
@@ -53,7 +54,7 @@ public class ClienteControlador {
     @ResponseStatus(HttpStatus.OK)
     public Cliente updateClient(@PathVariable("id") String id,
             @RequestBody Cliente cliente) {
-            return clienteServicio.actualizarCliente(id, cliente);
+        return clienteServicio.actualizarCliente(id, cliente);
     }
 
     @DeleteMapping("cliente/{id}")

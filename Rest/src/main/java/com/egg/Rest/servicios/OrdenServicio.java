@@ -30,15 +30,28 @@ public class OrdenServicio {
 
     @Transactional
     public Orden crearOrden(String id, Date fecha) {
-        System.out.println("Prueba1");
         Optional<Cliente> respuesta = clienteRepositorio.findById(id);
-        System.out.println("Prueba2");
         if (respuesta.isPresent()) {
-            System.out.println("Prueba interna");
             Cliente cliente = clienteRepositorio.findById(id).get();
-            System.out.println(cliente);
             Orden orden = new Orden(fecha, cliente);
             ordenRepositorio.save(orden);
+            return orden;
+        }
+        return null;
+    }
+
+    @Transactional
+    public Orden actualizarOrden(String id, String id_request, Date fecha) {
+        Optional<Orden> respuesta = ordenRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            Orden orden = ordenRepositorio.findById(id).get();
+            orden.setFecha(fecha);
+            Optional<Cliente> respuesta2 = clienteRepositorio.findById(id_request);
+            if (respuesta2.isPresent()){
+                Cliente cliente = clienteRepositorio.findById(id_request).get();
+                orden.setCliente(cliente);
+                ordenRepositorio.save(orden);
+            }
             return orden;
         }
         return null;
