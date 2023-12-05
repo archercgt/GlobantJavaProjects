@@ -9,6 +9,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
@@ -25,6 +26,9 @@ public class Noticia {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String titulo, cuerpo;
+    
+    @ManyToOne
+    private Periodista creador;
     
     @Temporal(TemporalType.DATE)
     private Date alta;
