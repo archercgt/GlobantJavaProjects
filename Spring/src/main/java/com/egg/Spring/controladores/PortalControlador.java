@@ -6,14 +6,17 @@
 package com.egg.Spring.controladores;
 
 import com.egg.Spring.entidades.Noticia;
+import com.egg.Spring.entidades.Periodista;
+import com.egg.Spring.entidades.Usuario;
 import com.egg.Spring.excepciones.MiException;
 import com.egg.Spring.servicios.NoticiaServicio;
+import com.egg.Spring.servicios.UsuarioServicio;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,10 +35,23 @@ public class PortalControlador {
 
     @Autowired
     private NoticiaServicio noticiaServicio;
+    @Autowired
+    private UsuarioServicio usuarioServicio;
 
     @GetMapping("/")
     public String index() {
         return "index.html";
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_USUARIO', 'ROLE_PERIODISTA', 'ROLE_ADMIN')")
+    @GetMapping("/inicio")
+    public String inicio(HttpSession session) {
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+
+        if (logueado.getRol().toString().equals("ADMIN")) {
+            return "redirect:/admin/dashboard";
+        }
+        return "index_noticias.html";
     }
 
     @GetMapping("/listar")
@@ -65,23 +81,52 @@ public class PortalControlador {
         modelo.addAttribute("noticias", noticias);
         return "noticia_eliminar.html";
     }
-    
+
     @GetMapping("/vista/{id}")
-    public String vista(@PathVariable String id, ModelMap modelo){
+    public String vista(@PathVariable String id, ModelMap modelo) {
         modelo.put("noticia", noticiaServicio.getOne(id));
         return "noticia_vista.html";
     }
 
-    @PostMapping("/crear")
-    public String registrar(@RequestParam String input_titulo, @RequestParam String input_descripcion, ModelMap modelo) {
+    @GetMapping("/registrar")
+    public String registrar() {
+        return "registro.html";
+    }
+
+    @PostMapping("/registrar")
+    public String login(@RequestParam String nombre, @RequestParam String email,
+            @RequestParam String password, @RequestParam String password2, ModelMap modelo) {
         try {
-            noticiaServicio.crearNoticia(input_titulo, input_descripcion);
+            usuarioServicio.registrar(nombre, email, password, password2);
+            modelo.put("exito", "El usuario fue creado correctamente");
+            return "index.html";
+        } catch (MiException ex) {
+            modelo.put("error", ex.getMessage());
+            modelo.put("nombre", nombre);
+            modelo.put("email", email);
+            return "registro.html";
+        }
+    }
+
+    @GetMapping("/login")
+    public String login(@RequestParam(required = false) String error, ModelMap modelo) {
+        if (error != null) {
+            modelo.put("error", "Usuario o contraseña invalidos!");
+        }
+        return "login.html";
+    }
+
+    @PostMapping("/crear")
+    public String registrar(@RequestParam String input_titulo, @RequestParam String input_descripcion, HttpSession session, ModelMap modelo) {
+        try {
+            Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+            noticiaServicio.crearNoticia(input_titulo, input_descripcion,logueado);
             modelo.put("exito", "La noticia fue cargada correctamente");
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
             return "noticia_form.html";
         }
-        return "index.html";
+        return "index_noticias.html";
     }
 
     @PostMapping("/modificar")

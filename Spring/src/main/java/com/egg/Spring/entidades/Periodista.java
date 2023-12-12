@@ -5,8 +5,13 @@
  */
 package com.egg.Spring.entidades;
 
+
+import com.egg.Spring.enumeraciones.Rol;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -15,12 +20,29 @@ import javax.persistence.Entity;
 @Entity
 public class Periodista extends Usuario{
     
-    private ArrayList<Noticia> misNoticias;
-    private Integer sueldoMensual;
+    @OneToMany
+    private List<Noticia> misNoticias;
 
     public Periodista() {
+        misNoticias = new ArrayList();
     }
     
-    
-    
+    public Periodista(String nombre, String email, String password, Rol rol){
+        this.nombre = nombre;
+        this.email = email;
+        this.password = password;
+        this.rol = rol;
+        activo = true;
+        fecha_alta = new Date();
+        misNoticias = new ArrayList();
+    }
+
+    public List<Noticia> getMisNoticias() {
+        return misNoticias;
+    }
+
+    public void setMisNoticias(List<Noticia> misNoticias) {
+        this.misNoticias = misNoticias;
+    }
+
 }

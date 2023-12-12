@@ -16,7 +16,7 @@
     <body>
       <nav class="navbar navbar-expand-lg navBar">
             <div class="containerImg">
-                <a href="/" class="navbar-brand d-flex align-items-center">
+                <a href="/inicio" class="navbar-brand d-flex align-items-center">
                   <img class="logo" src="/img/Egg.png" alt="Img logo egg">
                 </a>
               </div>
@@ -38,6 +38,8 @@
                         <li><hr class="dropdown-divider"></li>
                         
                         <li><a class="dropdown-item" th:href="@{/eliminar}">Eliminar Noticia</a></li>
+                         <li><hr class="dropdown-divider" sec:authorize="hasRole('ADMIN')"></li>
+                         <li><a class="dropdown-item" sec:authorize="hasRole('ADMIN')" th:href="@{/eliminar}">Listar Usuarios</a></li>
                     </ul>
                 </li>
               </ul>

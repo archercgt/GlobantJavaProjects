@@ -6,8 +6,12 @@
 package com.egg.Spring.servicios;
 
 import com.egg.Spring.entidades.Noticia;
+import com.egg.Spring.entidades.Periodista;
+import com.egg.Spring.entidades.Usuario;
+import com.egg.Spring.enumeraciones.Rol;
 import com.egg.Spring.excepciones.MiException;
 import com.egg.Spring.repositorios.NoticiaRepositorio;
+import com.egg.Spring.repositorios.UsuarioRepositorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,14 +29,18 @@ public class NoticiaServicio {
 
     @Autowired
     private NoticiaRepositorio noticiaRepositorio;
+    
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
 
     @Transactional
-    public void crearNoticia(String titulo, String cuerpo) throws MiException {
+    public void crearNoticia(String titulo, String cuerpo, Usuario logueado) throws MiException {
         validar(titulo, cuerpo);
         Noticia noticia = new Noticia();
         noticia.setTitulo(titulo);
         noticia.setCuerpo(cuerpo);
         noticia.setAlta(new Date());
+        System.out.println(logueado);
         noticiaRepositorio.save(noticia);
     }
 

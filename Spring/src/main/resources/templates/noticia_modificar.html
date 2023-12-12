@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="ISO-8859-1">
-        <title>Modificacion de Noticias</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <link rel="stylesheet" href="/css/formulario.css">
-    </head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace= "/fragments/head2  :: head"</head>
     <body>
 
         <nav class="navbar navbar-expand-lg navBar">
             <div class="containerImg">
-                <a href="/" class="navbar-brand d-flex align-items-center">
+                <a href="/inicio" class="navbar-brand d-flex align-items-center">
                     <img class="logo" src="/img/Egg.png" alt="Img logo egg">
                 </a>
             </div>
@@ -31,6 +26,8 @@
                             <li><hr class="dropdown-divider"></li>
 
                             <li><a class="dropdown-item" th:href="@{/eliminar}">Eliminar Noticia</a></li>
+                            <li><hr class="dropdown-divider" sec:authorize="hasRole('ADMIN')"></li>
+                            <li><a class="dropdown-item" sec:authorize="hasRole('ADMIN')" th:href="@{/eliminar}">Listar Usuarios</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -72,7 +69,7 @@
             <section class=" text-center container">
                 <div class="row mt-3">
                     <div class="divVolver">
-                        <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
+                        <a th:href="@{/inicio}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
                     </div>
                 </div>
             </section>

@@ -5,6 +5,7 @@
  */
 package com.egg.Spring.entidades;
 
+
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -58,6 +59,14 @@ public class Noticia {
 
     public void setCuerpo(String cuerpo) {
         this.cuerpo = cuerpo;
+    }
+
+    public Periodista getCreador() {
+        return creador;
+    }
+
+    public void setCreador(Periodista creador) {
+        this.creador = creador;
     }
 
     public Date getAlta() {
